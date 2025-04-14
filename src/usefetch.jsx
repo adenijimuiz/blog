@@ -4,10 +4,13 @@ export const Usefetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
+
     useEffect(() => {
+      const abortCont = new AbortController();
+
       setTimeout(() => {
         //don't use the setTimeout in real applications we are using it here because we are fetching in localhost
-        fetch(url)
+        fetch(url, {signal: abortCont.signal})
         .then((res) => {
           if (!res.ok) {
             throw new Error("could not fetch data");
@@ -22,10 +25,16 @@ export const Usefetch = (url) => {
         })
         .catch((err) => {
           // console.log(err.message)//instead of the console it is in the setError state
-          setError(err.message);
-          setIsPending(false);
+          if (err.name === 'AbortError') {
+            console.log('fetch aborted');
+          }else {
+            setError(err.message);
+            setIsPending(false);
+          }
         })
-      },[3000]);
+      }, 3000);
+
+      return () => abortCont.abort();
     }, [url])
 
     return{
