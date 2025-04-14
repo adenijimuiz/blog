@@ -117,3 +117,16 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.not-found h2{
+  font-size: 20px;
+}
+
+.not-found p{
+  margin: 10px 0;
+}
+
+.not-found a{
+  text-decoration: none;
+  cursor: pointer;
+}
