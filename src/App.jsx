@@ -1,3 +1,4 @@
+import { BlogDetails } from "./BlogDetails"
 import { CreateBlog } from "./CreateBlog"
 import Home from "./Home"
 import Navbar from "./Navbar"
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/create" element={<CreateBlog />}/>
+            <Route path="/blogs/:id" element={<BlogDetails />}/>
           </Routes>
         </div>
       </div>
