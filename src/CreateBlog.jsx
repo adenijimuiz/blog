@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 export const CreateBlog = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('mario');
-  const [isPending, setIsPending] = useState(false)
+  const [isPending, setIsPending] = useState(false);
+  const history = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,7 +20,8 @@ export const CreateBlog = () => {
       body: JSON.stringify(blog)
     }).then(() => {
       // console.log('new blog added');
-      setIsPending(false)
+      setIsPending(false);
+      history('/');
     })
   }
 
