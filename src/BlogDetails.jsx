@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Usefetch } from './Usefetch';
+import { Usefetch } from './Usefetch'; //it working
 
 export const BlogDetails = () => {
   const { id } = useParams();
